@@ -1,19 +1,49 @@
-import { Suspense } from "react";
+import { prisma } from "@/lib/prisma";
 import CollectionContent from "@/components/collection-content";
 
-export default function CollectionPage() {
+export default async function CollectionPage({
+                                                 searchParams,
+                                             }: {
+    searchParams: { category?: string };
+}) {
+    const activeCategory = searchParams.category || "Voir Tout";
+
+    const [rawCategories, products] = await Promise.all([
+        prisma.product.findMany({
+            select: { category: true },
+            distinct: ["category"],
+            orderBy: { category: "asc" },
+        }),
+        prisma.product.findMany({
+            where:
+                activeCategory !== "Voir Tout"
+                    ? { category: activeCategory }
+                    : undefined,
+            orderBy: { createdAt: "desc" },
+        }),
+    ]);
+
+    const categories = rawCategories.map((p) => ({
+        name: p.category,
+        productCount: 0, // optionnel, à remplir si besoin
+    }));
+
+    const formattedProducts = products.map((p) => ({
+        id: p.id,
+        name: p.name,
+        description: p.description,
+        image: p.image,
+        category: p.category,
+        badge: p.badge,
+        price: p.price ?? null,
+        slug: p.slug,
+    }));
+
     return (
-        <div className="min-h-screen">
-            <Suspense fallback={
-                <div className="mx-auto max-w-7xl px-6 py-12 md:py-20">
-                    <div className="mt-12 text-center">
-                        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-foreground border-r-transparent"></div>
-                        <p className="mt-4 text-sm text-muted-foreground">Chargement...</p>
-                    </div>
-                </div>
-            }>
-                <CollectionContent />
-            </Suspense>
-        </div>
+        <CollectionContent
+            initialCategories={categories}
+            initialProducts={formattedProducts}
+            initialCategory={activeCategory}
+        />
     );
 }

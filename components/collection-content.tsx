@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, useCallback } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 
 interface Product {
     id: number;
@@ -21,72 +21,33 @@ interface Category {
     productCount: number;
 }
 
-export default function CollectionContent() {
+interface Props {
+    initialCategories: Category[];
+    initialProducts: Product[];
+    initialCategory: string;
+}
+
+export default function CollectionContent({
+                                              initialCategories,
+                                              initialProducts,
+                                              initialCategory,
+                                          }: Props) {
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const initialCategory = searchParams.get("category") || "Voir Tout";
-
     const [activeCategory, setActiveCategory] = useState(initialCategory);
-    const [categories, setCategories] = useState<Category[]>([]);
-    const [products, setProducts] = useState<Product[]>([]);
-    const [loadingCategories, setLoadingCategories] = useState(true);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [isPending, startTransition] = useTransition();
 
-    // Charger les catégories au montage
-    useEffect(() => {
-        const fetchCategories = async () => {
-            setLoadingCategories(true);
-            try {
-                const response = await fetch("/api/categories");
-                if (!response.ok) throw new Error("Failed to fetch categories");
-                const data = await response.json();
-                setCategories(data);
-            } catch (err) {
-                console.error("Error fetching categories:", err);
-            } finally {
-                setLoadingCategories(false);
-            }
-        };
-
-        fetchCategories();
-    }, []);
-
-    const fetchProducts = useCallback(async () => {
-        setLoading(true);
-        setError(null);
-        try {
-            const categoryParam =
-                activeCategory !== "Voir Tout"
-                    ? `?category=${encodeURIComponent(activeCategory)}`
-                    : "";
-            const response = await fetch(`/api/products${categoryParam}`);
-            if (!response.ok) throw new Error("Failed to fetch products");
-            const data = await response.json();
-            setProducts(data);
-        } catch (err) {
-            console.error("Error fetching products:", err);
-            setError("Impossible de charger les produits");
-        } finally {
-            setLoading(false);
-        }
-    }, [activeCategory]);
-
-    useEffect(() => {
-        fetchProducts();
-    }, [fetchProducts]);
+    const tabs = ["Voir Tout", ...initialCategories.map((c) => c.name)];
 
     const handleCategoryChange = (category: string) => {
         setActiveCategory(category);
-        if (category === "Voir Tout") {
-            router.push("/collection");
-        } else {
-            router.push(`/collection?category=${encodeURIComponent(category)}`);
-        }
+        startTransition(() => {
+            if (category === "Voir Tout") {
+                router.push("/collection");
+            } else {
+                router.push(`/collection?category=${encodeURIComponent(category)}`);
+            }
+        });
     };
-
-    // "Voir Tout" + catégories depuis l'API
-    const tabs = ["Voir Tout", ...categories.map((c) => c.name)];
 
     return (
         <div className="mx-auto max-w-7xl px-6 py-12 md:py-20">
@@ -107,32 +68,21 @@ export default function CollectionContent() {
                 className="mt-10 flex flex-wrap items-center justify-center gap-6 border-b border-border pb-4"
                 aria-label="Filtrer par catégorie"
             >
-                {loadingCategories ? (
-                    <div className="flex gap-6">
-                        {[...Array(5)].map((_, i) => (
-                            <div
-                                key={i}
-                                className="h-4 w-20 animate-pulse rounded bg-muted"
-                            />
-                        ))}
-                    </div>
-                ) : (
-                    tabs.map((cat) => (
-                        <button
-                            key={cat}
-                            type="button"
-                            onClick={() => handleCategoryChange(cat)}
-                            disabled={loading}
-                            className={`text-sm transition-colors disabled:opacity-50 ${
-                                activeCategory === cat
-                                    ? "border-b-2 border-foreground pb-[14px] font-medium text-foreground"
-                                    : "pb-[16px] text-muted-foreground hover:text-foreground"
-                            }`}
-                        >
-                            {cat}
-                        </button>
-                    ))
-                )}
+                {tabs.map((cat) => (
+                    <button
+                        key={cat}
+                        type="button"
+                        onClick={() => handleCategoryChange(cat)}
+                        disabled={isPending}
+                        className={`text-sm transition-colors disabled:opacity-50 ${
+                            activeCategory === cat
+                                ? "border-b-2 border-foreground pb-[14px] font-medium text-foreground"
+                                : "pb-[16px] text-muted-foreground hover:text-foreground"
+                        }`}
+                    >
+                        {cat}
+                    </button>
+                ))}
             </nav>
 
             {/* Active Filter Display */}
@@ -151,8 +101,8 @@ export default function CollectionContent() {
                 </div>
             )}
 
-            {/* Loading State */}
-            {loading && (
+            {/* Loading State (navigation en cours) */}
+            {isPending && (
                 <div className="mt-12 text-center">
                     <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-foreground border-r-transparent" />
                     <p className="mt-4 text-sm text-muted-foreground">
@@ -161,23 +111,10 @@ export default function CollectionContent() {
                 </div>
             )}
 
-            {/* Error State */}
-            {error && (
-                <div className="mt-12 text-center">
-                    <p className="text-sm text-red-600">{error}</p>
-                    <button
-                        onClick={fetchProducts}
-                        className="mt-4 rounded-full border border-foreground px-6 py-2 text-sm font-medium text-foreground transition-colors hover:bg-foreground hover:text-background"
-                    >
-                        Réessayer
-                    </button>
-                </div>
-            )}
-
             {/* Product Grid */}
-            {!loading && !error && (
+            {!isPending && (
                 <>
-                    {products.length === 0 ? (
+                    {initialProducts.length === 0 ? (
                         <div className="mt-12 text-center">
                             <p className="text-sm text-muted-foreground">
                                 Aucun produit trouvé dans cette catégorie.
@@ -186,11 +123,12 @@ export default function CollectionContent() {
                     ) : (
                         <>
                             <p className="mt-8 text-center text-sm text-muted-foreground">
-                                {products.length} produit{products.length > 1 ? "s" : ""} trouvé
-                                {products.length > 1 ? "s" : ""}
+                                {initialProducts.length} produit
+                                {initialProducts.length > 1 ? "s" : ""} trouvé
+                                {initialProducts.length > 1 ? "s" : ""}
                             </p>
                             <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-                                {products.map((product) => (
+                                {initialProducts.map((product) => (
                                     <Link
                                         key={product.id}
                                         href={`/product/${product.id}`}
