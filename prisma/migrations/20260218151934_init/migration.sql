@@ -1,0 +1,29 @@
+-- CreateTable
+CREATE TABLE "Product" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "price" DOUBLE PRECISION,
+    "category" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
+    "badge" TEXT,
+    "slug" TEXT NOT NULL,
+    "stock" INTEGER NOT NULL DEFAULT 0,
+    "featured" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Product_slug_key" ON "Product"("slug");
+
+-- CreateIndex
+CREATE INDEX "Product_category_idx" ON "Product"("category");
+
+-- CreateIndex
+CREATE INDEX "Product_slug_idx" ON "Product"("slug");
+
+-- CreateIndex
+CREATE INDEX "Product_featured_idx" ON "Product"("featured");
