@@ -1,35 +1,38 @@
 import Image from "next/image";
 import Link from "next/link";
-import {notFound} from "next/navigation";
+import { notFound } from "next/navigation";
 import prisma from "@/lib/prisma";
 
-interface ProductPageProps {
-    params: Promise<{
-        id: string;
-    }>;
-}
 
 async function getProduct(idStr: string) {
-    try {
-        const id = parseInt(idStr, 10);
-        if (Number.isNaN(id)) return null;
+    const id = parseInt(idStr, 10);
+    if (Number.isNaN(id)) return null;
 
-        return await prisma.product.findUnique({
-            where: {id},
-        });
-    } catch (error) {
-        console.error("Error fetching product:", error);
-        return null;
-    }
+    return prisma.product.findUnique({
+        where: {id},
+    });
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
-    const { id } = await params;
+async function getRelatedProducts(category: string, excludeId: number) {
+    return prisma.product.findMany({
+        where: {
+            category,
+            id: {not: excludeId},
+        },
+        take: 3,
+        orderBy: {createdAt: "desc"},
+    });
+}
+
+export default async function ProductPage({ params }: { params: { id: string } }) {
+    const { id } = params;
     const product = await getProduct(id);
 
     if (!product) {
         notFound();
     }
+
+    const relatedProducts = await getRelatedProducts(product.category, product.id);
 
     return (
         <div className="min-h-screen">
@@ -69,7 +72,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         <div className="space-y-6">
                             <div>
                                 <Link
-                                    href={`/collection?category=${product.category}`}
+                                    href={`/collection?category=${encodeURIComponent(product.category)}`}
                                     className="text-xs font-semibold uppercase tracking-[0.2em] text-primary transition-colors hover:text-primary/80"
                                 >
                                     {product.category}
@@ -147,30 +150,50 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     </div>
                 </div>
 
-                <div className="mt-24">
-                    <h2 className="mb-8 text-center font-serif text-3xl font-medium text-foreground">
-                        Vous pourriez aussi aimer
-                    </h2>
-                </div>
+                {/* Produits similaires */}
+                {relatedProducts.length > 0 && (
+                    <div className="mt-24">
+                        <h2 className="mb-8 text-center font-serif text-3xl font-medium text-foreground">
+                            Vous pourriez aussi aimer
+                        </h2>
+                        <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+                            {relatedProducts.map((related) => (
+                                <Link
+                                    key={related.id}
+                                    href={`/product/${related.id}`}
+                                    className="group"
+                                >
+                                    <div className="relative aspect-square overflow-hidden rounded-sm bg-muted">
+                                        <Image
+                                            src={related.image || "/placeholder.svg"}
+                                            alt={related.name}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                        />
+                                        {related.badge && (
+                                            <span className="absolute left-3 top-3 rounded-sm bg-primary px-3 py-1 text-[10px] uppercase tracking-widest text-primary-foreground">
+                                                {related.badge}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <h3 className="mt-4 font-serif text-base font-medium text-foreground">
+                                        {related.name}
+                                    </h3>
+                                    <p className="mt-1 text-sm text-muted-foreground">
+                                        {related.description}
+                                    </p>
+                                    {related.price && (
+                                        <p className="mt-2 text-sm font-medium text-foreground">
+                                            {related.price.toFixed(2)} €
+                                        </p>
+                                    )}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
-}
-
-export async function generateMetadata({ params }: ProductPageProps) {
-    const { id: idStr } = await params;
-    const id = parseInt(idStr, 10);
-    if (Number.isNaN(id)) {
-        return { title: "Produit non trouvé" };
-    }
-
-    const product = await getProduct(idStr);
-    if (!product) {
-        return { title: "Produit non trouvé" };
-    }
-
-    return {
-        title: `${product.name} | Ogres de la Terre`,
-        description: product.description,
-    };
 }
