@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
     images: {
         remotePatterns: [
             {
-                hostname: "images.selency.com",
+                hostname: "ogresdelaterre.fr",
             },
         ],
     }
