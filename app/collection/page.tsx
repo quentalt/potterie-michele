@@ -23,12 +23,12 @@ export default async function CollectionPage({
         }),
     ]);
 
-    const categories = rawCategories.map((p) => ({
+    const categories = rawCategories.map((p: { category: any; }) => ({
         name: p.category,
         productCount: 0, // optionnel, à remplir si besoin
     }));
 
-    const formattedProducts = products.map((p) => ({
+    const formattedProducts = products.map((p: { id: any; name: any; description: any; image: any; category: any; badge: any; price: any; slug: any; }) => ({
         id: p.id,
         name: p.name,
         description: p.description,
