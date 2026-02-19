@@ -36,17 +36,16 @@ const PRODUCTS = [
 export default async function CollectionPage({
                                                  searchParams,
                                              }: {
-    searchParams: { category?: string };
+    searchParams: Promise<{ category?: string }>;
 }) {
-    const activeCategory = searchParams.category || "Voir Tout";
+    const { category } = await searchParams;
+    const activeCategory = category || "Voir Tout";
 
-    // Filtrage par catégorie
     const products =
         activeCategory !== "Voir Tout"
             ? PRODUCTS.filter((p) => p.category === activeCategory)
             : PRODUCTS;
 
-    // Catégories uniques extraites des produits
     const categories = [
         ...new Set(PRODUCTS.map((p) => p.category)),
     ].map((name) => ({ name, productCount: 0 }));
