@@ -1,11 +1,12 @@
 import { prisma } from "@/lib/prisma";
 import CollectionContent from "@/components/collection-content";
 
-export default async function CollectionPage({searchParams,}: {
-    searchParams: Promise<{ category?: string }>;
+export default async function CollectionPage({
+                                                 searchParams,
+                                             }: {
+    searchParams: { category?: string };
 }) {
-    const { category } = await searchParams;
-    const activeCategory = category || "Voir Tout";
+    const activeCategory = searchParams.category || "Voir Tout";
 
     const [rawCategories, products] = await Promise.all([
         prisma.product.findMany({
@@ -24,7 +25,7 @@ export default async function CollectionPage({searchParams,}: {
 
     const categories = rawCategories.map((p) => ({
         name: p.category,
-        productCount: 0,
+        productCount: 0, // optionnel, à remplir si besoin
     }));
 
     const formattedProducts = products.map((p) => ({
