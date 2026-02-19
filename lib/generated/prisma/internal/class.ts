@@ -34,6 +34,10 @@ const config: runtime.GetPrismaClientConfig = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -56,8 +60,8 @@ const config: runtime.GetPrismaClientConfig = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../lib/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Product {\n  id          Int      @id @default(autoincrement())\n  name        String\n  description String\n  price       Float?\n  category    String\n  image       String\n  badge       String?\n  slug        String   @unique\n  stock       Int      @default(0)\n  featured    Boolean  @default(false)\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n\n  @@index([category])\n  @@index([slug])\n  @@index([featured])\n}\n",
-  "inlineSchemaHash": "5849f4706e83e550ba2a9381d158a6fdbafb06a0126f39a1c65c5d8598c9efe8",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client\"\n  output        = \"../lib/generated/prisma\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Product {\n  id          Int      @id @default(autoincrement())\n  name        String\n  description String\n  price       Float?\n  category    String\n  image       String\n  badge       String?\n  slug        String   @unique\n  stock       Int      @default(0)\n  featured    Boolean  @default(false)\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n\n  @@index([category])\n  @@index([slug])\n  @@index([featured])\n}\n",
+  "inlineSchemaHash": "bba14a75de4e1c01fa3b86a3516df9caed752a07a81a7ae05923a885fcfec5ca",
   "copyEngine": true,
   "runtimeDataModel": {
     "models": {},

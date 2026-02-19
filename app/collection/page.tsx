@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import {prisma} from "@/lib/prisma";
 import CollectionContent from "@/components/collection-content";
 
 export default async function CollectionPage({
@@ -23,12 +23,12 @@ export default async function CollectionPage({
         }),
     ]);
 
-    const categories = rawCategories.map((p: { category: any; }) => ({
+    const categories = rawCategories.map((p) => ({
         name: p.category,
         productCount: 0, // optionnel, à remplir si besoin
     }));
 
-    const formattedProducts = products.map((p: { id: any; name: any; description: any; image: any; category: any; badge: any; price: any; slug: any; }) => ({
+    const formattedProducts = products.map((p) => ({
         id: p.id,
         name: p.name,
         description: p.description,
