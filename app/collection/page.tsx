@@ -6,12 +6,13 @@ export default async function CollectionPage({
                                              }: {
     searchParams: { category?: string };
 }) {
-    const activeCategory = searchParams.category || "Voir Tout";
+    const { category } = searchParams;
+    const activeCategory = category || "Voir Tout";
 
     const [rawCategories, products] = await Promise.all([
-        prisma.product.findMany({
-            select: { category: true },
-            distinct: ["category"],
+        prisma.product.groupBy({
+            by: ["category"],
+            _count: { category: true },
             orderBy: { category: "asc" },
         }),
         prisma.product.findMany({
@@ -23,19 +24,28 @@ export default async function CollectionPage({
         }),
     ]);
 
-    const categories = rawCategories.map((p: { category: any; }) => ({
+    const categories = rawCategories.map((p: { category: string; _count: { category: number } }) => ({
         name: p.category,
-        productCount: 0, // optionnel, à remplir si besoin
+        productCount: p._count.category,
     }));
 
-    const formattedProducts = products.map((p: { id: any; name: any; description: any; image: any; category: any; badge: any; price: any; slug: any; }) => ({
+    const formattedProducts = products.map((p: {
+        id: string;
+        name: string;
+        description: string | null;
+        image: string | null;
+        category: string;
+        badge: string | null;
+        price: number | null;
+        slug: string;
+    }) => ({
         id: p.id,
         name: p.name,
         description: p.description,
         image: p.image,
         category: p.category,
         badge: p.badge,
-        price: p.price ?? null,
+        price: p.price,
         slug: p.slug,
     }));
 
