@@ -9,7 +9,6 @@ const PRODUCTS = [
         category: "",
         badge: "Nouveau",
         price: 29.99,
-        stock: 10,
         slug: "statuette-boudha",
     },
     {
