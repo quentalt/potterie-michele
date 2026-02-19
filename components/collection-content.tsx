@@ -6,7 +6,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 
 interface Product {
-    id: number;
+    id: string;
     name: string;
     description: string;
     image: string;
@@ -101,7 +101,7 @@ export default function CollectionContent({
                 </div>
             )}
 
-            {/* Loading State (navigation en cours) */}
+            {/* Loading State */}
             {isPending && (
                 <div className="mt-12 text-center">
                     <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-foreground border-r-transparent" />
@@ -131,7 +131,7 @@ export default function CollectionContent({
                                 {initialProducts.map((product) => (
                                     <Link
                                         key={product.id}
-                                        href={`/product/${product.id}`}
+                                        href={`/product/${product.slug}`}  // ← slug au lieu de id
                                         className="group"
                                     >
                                         <div className="relative aspect-square overflow-hidden rounded-sm bg-muted">

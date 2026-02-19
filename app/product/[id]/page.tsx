@@ -1,24 +1,51 @@
-import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+const PRODUCTS = [
+    {
+        id: "1",
+        name: "Nom du produit 1",
+        description: "Description du produit 1",
+        image: "https://ogresdelaterre.fr/wp-content/uploads/2021/12/IMG_1789-768x1024.jpg",
+        category: "Catégorie A",
+        badge: "Nouveau",
+        price: 29.99,
+        slug: "produit-1",
+        stock: 5,
+    },
+    {
+        id: "2",
+        name: "Nom du produit 2",
+        description: "Description du produit 2",
+        image: "https://ogresdelaterre.fr/wp-content/uploads/2021/11/IMG_1914-768x1024.jpg",
+        category: "Catégorie B",
+        badge: null,
+        price: 49.99,
+        slug: "produit-2",
+        stock: 0,
+    },
+    {
+        id: "3",
+        name: "Nom du produit 3",
+        description: "Description du produit 3",
+        image: "https://ogresdelaterre.fr/wp-content/uploads/2021/06/1-photos-du-240219-058.jpg",
+        category: "Catégorie A",
+        badge: "Promo",
+        price: 19.99,
+        slug: "produit-3",
+        stock: 12,
+    },
+];
+
 interface ProductPageProps {
     params: {
-        id: string;
+        slug: string;
     };
 }
 
-export default async function ProductId({ params }: ProductPageProps) {
-    const id = parseInt(params.id);
-
-    if (isNaN(id)) {
-        return notFound();
-    }
-
-    const product = await prisma.product.findUnique({
-        where: { id },
-    });
+export default async function ProductPage({ params }: ProductPageProps) {
+    const product = PRODUCTS.find((p) => p.slug === params.slug);
 
     if (!product) {
         return notFound();
@@ -27,7 +54,7 @@ export default async function ProductId({ params }: ProductPageProps) {
     return (
         <div className="max-w-6xl mx-auto px-6 py-10">
             <Link
-                href="/products"
+                href="/collection"
                 className="text-sm text-gray-500 hover:underline mb-6 inline-block"
             >
                 ← Retour aux produits
@@ -45,14 +72,14 @@ export default async function ProductId({ params }: ProductPageProps) {
                         />
                     ) : (
                         <div className="flex items-center justify-center h-full text-gray-400">
-                            Pas d'image
+                            Pas d&apos;image
                         </div>
                     )}
 
                     {product.badge && (
                         <span className="absolute top-4 left-4 bg-black text-white text-xs px-3 py-1 rounded-full">
-              {product.badge}
-            </span>
+                            {product.badge}
+                        </span>
                     )}
                 </div>
 
@@ -79,9 +106,7 @@ export default async function ProductId({ params }: ProductPageProps) {
 
                         <p
                             className={`text-sm font-medium ${
-                                product.stock > 0
-                                    ? "text-green-600"
-                                    : "text-red-500"
+                                product.stock > 0 ? "text-green-600" : "text-red-500"
                             }`}
                         >
                             {product.stock > 0
