@@ -1,4 +1,4 @@
-import {prisma} from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import CollectionContent from "@/components/collection-content";
 
 export default async function CollectionPage({
@@ -6,13 +6,12 @@ export default async function CollectionPage({
                                              }: {
     searchParams: { category?: string };
 }) {
-    const { category } = searchParams;
-    const activeCategory = category || "Voir Tout";
+    const activeCategory = searchParams.category || "Voir Tout";
 
     const [rawCategories, products] = await Promise.all([
-        prisma.product.groupBy({
-            by: ["category"],
-            _count: { category: true },
+        prisma.product.findMany({
+            select: { category: true },
+            distinct: ["category"],
             orderBy: { category: "asc" },
         }),
         prisma.product.findMany({
@@ -24,28 +23,19 @@ export default async function CollectionPage({
         }),
     ]);
 
-    const categories = rawCategories.map((p: { category: string; _count: { category: number } }) => ({
+    const categories = rawCategories.map((p) => ({
         name: p.category,
-        productCount: p._count.category,
+        productCount: 0, // optionnel, à remplir si besoin
     }));
 
-    const formattedProducts = products.map((p: {
-        id: string;
-        name: string;
-        description: string | null;
-        image: string | null;
-        category: string;
-        badge: string | null;
-        price: number | null;
-        slug: string;
-    }) => ({
+    const formattedProducts = products.map((p) => ({
         id: p.id,
         name: p.name,
         description: p.description,
         image: p.image,
         category: p.category,
         badge: p.badge,
-        price: p.price,
+        price: p.price ?? null,
         slug: p.slug,
     }));
 
