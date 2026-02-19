@@ -9,7 +9,7 @@ const PRODUCTS = [
         description: "jolie pièce en terre cuite, façonnée à la main avec soin et passion. Chaque détail de cette statue de Bouddha a été minutieusement sculpté pour capturer l'essence de la sérénité et de la sagesse. Avec sa finition lisse et ses lignes élégantes, cette pièce unique apportera une touche de tranquillité et d'harmonie à votre espace de vie.",
         image: "https://ogresdelaterre.fr/wp-content/uploads/2021/12/IMG_1789-768x1024.jpg",
         category: "Statuettes",
-        badge: "Statuettes",
+        badge: "Nouveau",
         price: 29.99,
         stock: 10,
         slug: "statuette-boudha",
