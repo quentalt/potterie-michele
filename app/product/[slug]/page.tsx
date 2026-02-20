@@ -115,7 +115,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         </p>
                     </div>
 
-                    <button
+                 {/*   <button
                         disabled={product.stock === 0}
                         className={`mt-6 px-6 py-3 rounded-xl font-medium transition ${
                             product.stock > 0
@@ -124,7 +124,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         }`}
                     >
                         Ajouter au panier
-                    </button>
+                    </button>*/}
                 </div>
             </div>
         </div>
