@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import {Contact} from "@/components/contact"
+import {ContactHero} from "@/components/contact/contact-hero";
+import {ContactForm} from "@/components/contact/contact-form";
+import {ContactAtelier} from "@/components/contact/contact-atelier";
 
 export const metadata: Metadata = {
     title: "L'Artisanat | Ogresdelaterre",
@@ -10,7 +12,9 @@ export const metadata: Metadata = {
 export default function ContactPage() {
     return (
         <>
-            <Contact/>
+            <ContactHero />
+            <ContactForm />
+            <ContactAtelier />
         </>
     );
 }

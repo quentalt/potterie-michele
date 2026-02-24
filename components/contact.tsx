@@ -30,10 +30,10 @@ export function Contact() {
                         <div className="space-y-6 text-center lg:space-y-8 lg:text-left">
                             <div>
                                 <a
-                                    href="mailto:rey.michele@hotmail.fr"
+                                    href="mailto:rey.michele@ogresdelaterre.fr"
                                     className="inline-block text-xl font-light tracking-wide text-foreground transition-colors hover:text-primary sm:text-2xl lg:text-3xl"
                                 >
-                                    rey.michele@hotmail.fr
+                                    rey.michele@ogresdelaterre.fr
                                 </a>
                             </div>
 
