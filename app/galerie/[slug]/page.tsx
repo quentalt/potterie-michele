@@ -91,7 +91,7 @@ export default async function ProductPage({ params }: Props) {
 
                     {/* Name + description */}
                     <div className="mt-8 max-w-2xl">
-                        <h2 className="font-serif text-xl font-semibold italic text-primary">
+                        <h2 className="font-serif text-xl font-semibold text-chart-5">
                             {product.name},
                         </h2>
                         <div className="mt-4 space-y-4">
