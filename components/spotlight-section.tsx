@@ -25,14 +25,14 @@ export function SpotlightSection() {
               </p>
 
               {/* Title */}
-              <h2 className="mt-3 font-serif text-5xl italic leading-tight text-primary md:text-6xl">
+              <h2 className="mt-3 font-kufam font-semibold text-5xl leading-tight text-primary md:text-6xl">
                 Sculpture
                 <br />
                 du moment
               </h2>
 
               {/* Body */}
-              <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-foreground">
+              <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-foreground font-manrope">
                 <p>
                   La sculpture du moment naît d'une rencontre entre la matière
                   et l'instinct. La terre, encore fraîche, garde l'empreinte du

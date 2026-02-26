@@ -53,7 +53,7 @@ export default function CollectionContent({
         <div className="mx-auto max-w-7xl px-6 py-12 md:py-20">
             {/* Page Header */}
             <div className="text-center">
-                <h1 className="font-serif text-4xl font-medium tracking-tight text-primary md:text-5xl lg:text-6xl ">
+                <h1 className="font-kufam font-semibold text-4xl text-primary md:text-5xl lg:text-6xl ">
                     Galerie
                 </h1>
             </div>

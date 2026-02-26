@@ -34,22 +34,19 @@ export function ContactAtelier() {
 
                 {/* Text below images — left column only to leave space for overlapping image */}
                 <div className="mt-14 max-w-[55%]">
-                    <h3 className="font-serif text-lg font-semibold text-primary">
+                    <h3 className="font-manrope text-lg font-semibold text-brown">
                         L'atelier
                     </h3>
-                    <p className="mt-3 text-[13px] leading-relaxed text-foreground">
-                        Integer mauris sem, convallis ut, consequat in,
-                        sollicitudin sed, leo. Cras purus elit, hendrerit ut,
-                        egestas eget, sagittis at, nulla. Integer justo dui,
-                        faucibus dictum, convallis sodales, accumsan id, risus.
-                        Aenean risus. Vestibulum scelerisque placerat sem.
-                    </p>
-                    <p className="mt-4 text-[13px] leading-relaxed text-foreground">
-                        In eget sapien vitae massa rhoncus lacinia. Nullam at
-                        leo nec metus aliquam semper. Phasellus tincidunt, ante
-                        nec lacinia ultrices, quam mi dictum libero, vitae
-                        bibendum turpis elit ut lectus. Sed diam ante, lobortis
-                        sed, dignissim sit amet, condimentum in.
+                    <p className="mt-3 space-y-4 text-[15px] leading-relaxed font-manrope">
+                        Dans une vieille demeure d'Auxonne, un atelier de céramiste a pris ses
+                        quartiers là où résonnaient autrefois les outils d'un ébéniste. Les murs
+                        gardent la mémoire de ces deux artisanats complémentaires, où le
+                        travail de la terre a succédé à celui du bois.
+                        L'espace conserve cette âme d'atelier ancestral, avec ses poutres
+                        patinées et ses pierres usées par le temps. La poussière d'argile a
+                        remplacé la sciure de bois dans cette ancienne maison-atelier. Cette
+                        continuité artisanale donne au lieu une atmosphère unique, chargée
+                        d'histoire et de créativité.
                     </p>
                 </div>
             </div>

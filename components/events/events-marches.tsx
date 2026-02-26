@@ -6,8 +6,8 @@ export function EventsMarches() {
             <div className="mx-auto max-w-4xl">
                 {/* Title row — no "Voir tout" link, matching PDF */}
                 <div>
-                    <h2 className="font-serif text-5xl italic text-primary md:text-6xl">
-                        Marchés
+                    <h2 className="font-kufam font-semibold text-5xl text-primary md:text-6xl">
+                        Marchés et expositions
                     </h2>
                     <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                         Saison 2025 / 2026

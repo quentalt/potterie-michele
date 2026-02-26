@@ -21,17 +21,17 @@ export function AboutHero() {
 
                     {/* Title + body block — aligns to bottom of portrait */}
                     <div className="flex-1">
-                        <h1 className="font-serif text-5xl italic text-primary md:text-6xl">
+                        <h1 className="font-kufam font-semibold text-5xl text-primary md:text-6xl">
                             À propos
                         </h1>
-                        <h2 className="mt-3 font-serif text-3xl font-semibold text-chart-5 md:text-4xl">
+                        <h2 className="mt-3 font-kufam font-medium text-3xl text-brown md:text-4xl">
                             Michèle Rey
                             <br />
                             céramiste à Auxonne
                         </h2>
 
                         {/* Body text */}
-                        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-foreground">
+                        <div className="mt-6 space-y-4 text-[15px] leading-relaxed font-manrope">
                             <p>
                                 Basée à Auxonne, je façonne à la main lampes,
                                 vases, miroirs et sculptures en grès et
@@ -42,7 +42,7 @@ export function AboutHero() {
                             </p>
                             <p>
                                 Dans mon atelier{" "}
-                                <strong className="text-chart-5">O GRÈS DE LA TERRE</strong>, je conçois
+                                <span className="text-brown font-bold">O GRÈS DE LA TERRE</span>, je conçois
                                 des objets décoratifs et utilitaires empreints
                                 de ma vision artistique : des pièces singulières
                                 où textures et volumes s'épanouissent au rythme

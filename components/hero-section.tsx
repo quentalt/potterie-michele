@@ -23,19 +23,19 @@ export function HeroSection() {
             {/* Right: content */}
             <div className="flex-1 pt-2">
               {/* Italic orange label */}
-              <h1 className="font-serif text-5xl italic text-primary md:text-6xl">
+              <h1 className="font-kufam font-semibold text-5xl text-primary md:text-6xl">
                 Artisanat
               </h1>
 
               {/* Main title */}
-              <h2 className="mt-4 font-serif text-3xl font-semibold leading-tight text-chart-5 md:text-4xl">
+              <h2 className="mt-4 font-kufam font-medium text-3xl leading-tight text-brown md:text-4xl">
                 Façonné à la main,
                 <br />
                 inspiré par la terre.
               </h2>
 
               {/* Description */}
-              <p className="mt-6 text-[15px] leading-relaxed text-foreground">
+              <p className="mt-6 text-[15px] leading-relaxed font-manrope">
                 Mon approche se distingue des productions
                 industrielles : ici, chaque objet est unique. Le modelage
                 manuel me permet de créer des pièces authentiques,
@@ -49,13 +49,13 @@ export function HeroSection() {
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link
                     href="/galerie"
-                    className="rounded-sm bg-chart-5 px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                    className="rounded-sm bg-brown px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
                 >
                   Explorer la collection
                 </Link>
                 <Link
                     href="/a-propos"
-                    className="rounded-sm border border-chart-5 px-6 py-3 text-sm font-semibold text-chart-5 transition-colors hover:bg-chart-5 hover:text-white"
+                    className="rounded-sm border border-brown px-6 py-3 text-sm font-semibold text-brown transition-colors hover:bg-brown hover:text-white"
                 >
                   À Propos
                 </Link>

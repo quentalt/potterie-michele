@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { AboutHero } from "@/components/about/about-hero";
 import { AboutStory } from "@/components/about/about-story";
-import { AboutClosing } from "@/components/about/about-closing";
 
 export const metadata: Metadata = {
     title: "L'Artisanat | Ogresdelaterre",
@@ -14,7 +13,6 @@ export default function AboutPage() {
         <>
             <AboutHero />
             <AboutStory />
-            <AboutClosing />
         </>
     );
 }

@@ -26,20 +26,20 @@ export function ContactHero() {
 
                     {/* Text block */}
                     <div className="flex-1 pt-2">
-                        <h1 className="font-serif text-5xl italic text-primary md:text-6xl">
+                        <h1 className="font-kufam font-semibold text-5xl text-primary md:text-6xl">
                             Contact
                         </h1>
-                        <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-chart-5 md:text-4xl">
+                        <h2 className="mt-3 font-kufam font-medium text-3xl leading-tight text-brown md:text-4xl">
                             L'atelier est ouvert
                             <br />
                             sur rendez-vous.
                         </h2>
 
-                        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-foreground">
+                        <div className="mt-6 space-y-4 text-[15px] leading-relaxed font-manrope">
                             <p>
                                 Niché au cœur d'Auxonne, petite ville bourguignonne
                                 bordée par la Saône, l'atelier{" "}
-                                <span className="font-semibold text-chart-5">
+                                <span className="font-semibold text-brown">
                                     O GRÈS DE LA TERRE
                                 </span>{" "}
                                     est un espace

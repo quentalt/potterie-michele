@@ -20,16 +20,16 @@ export function EventsHero() {
 
                     {/* Text block */}
                     <div className="flex-1">
-                        <h1 className="font-serif text-5xl italic text-primary md:text-6xl">
+                        <h1 className="font-kufam font-semibold text-5xl text-primary md:text-6xl">
                             Événements
                         </h1>
-                        <h2 className="mt-3 font-serif text-3xl italic font-semibold text-chart-5 md:text-4xl">
+                        <h2 className="mt-3 font-kufam font-medium text-3xl text-brown md:text-4xl">
                             Rencontres, marchés
                             <br />
                             et expositions
                         </h2>
 
-                        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-foreground">
+                        <div className="mt-6 space-y-4 text-[15px] leading-relaxed font-manrope">
                             <p>
                                 Découvrez les marchés de créateurs et
                                 événements dédiés à la céramique dans notre

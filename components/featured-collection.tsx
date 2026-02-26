@@ -32,10 +32,10 @@ export function FeaturedCollection() {
           {/* Section header */}
           <div className="flex items-end justify-between">
             <div>
-              <h2 className="font-serif text-5xl italic text-primary md:text-6xl">
+              <h2 className="font-kufam font-semibold text-5xl text-primary md:text-6xl">
                 Galerie
               </h2>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              <p className="mt-1 text-xs font-manrope font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                 Saison 2025 / 2026
               </p>
             </div>
@@ -48,11 +48,11 @@ export function FeaturedCollection() {
           </div>
 
           {/* 3-column category grid */}
-          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-3 font-manrope">
             {categories.map((cat) => (
                 <Link key={cat.name} href={cat.href} className="group">
                   {/* Image — natural rectangle, not forced square */}
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-muted">
+                  <div className="relative aspect-[4/3] overflow-hidden  bg-muted">
                     <Image
                         src={cat.image}
                         alt={cat.name}
@@ -63,7 +63,7 @@ export function FeaturedCollection() {
                   </div>
 
                   {/* Category name */}
-                  <h3 className="mt-4 font-serif text-sm font-semibold text-chart-5">
+                  <h3 className="mt-4 font-manrope text-brown text-sm font-semibold">
                     {cat.name}
                   </h3>
 

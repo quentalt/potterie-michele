@@ -9,7 +9,24 @@
   --color-foreground: hsl(var(--foreground));
   --color-border: hsl(var(--border));
   --color-primary: hsl(var(--primary));
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-manrope: var(--font-manrope),
+  ui-sans-serif, system-ui, sans-serif;
+  --font-montserrat: var(--font-montserrat);
+  --font-saira: var(--font-saira);
+  --font-kufam: var(--font-kufam);
+  --color-brown: var(--brown);
+}
+
+@layer utilities {
+  .font-kufam {
+    font-family: var(--font-kufam);
+  }
+  .font-saira {
+    font-family: var(--font-saira);
+  }
+  .font-montserrat {
+    font-family: var(--font-montserrat);
+  }
 }
 
 
@@ -106,7 +123,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(0.978 0.004 60); /* Matching background */
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.68 0.19 45);
+  --primary: oklch(0.696 0.204 43.491);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -123,7 +140,7 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.73 0.186 52.568);
   /*--chart-5: oklch(0.769 0.188 70.08);*/
-  --chart-5: oklch(0.558 0.1435 43.94);
+  --brown: oklch(0.47 0.13 44);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);

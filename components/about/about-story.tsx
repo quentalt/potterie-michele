@@ -55,7 +55,7 @@ export function AboutStory() {
                     </div>
 
                     {/* Right: story text column */}
-                    <div className="space-y-5 text-justify text-[15px] leading-relaxed text-foreground">
+                    <div className="space-y-5 text-justify text-[15px] leading-relaxed font-manrope">
                         <p>
                             Mon approche se démarque résolument des productions
                             en série : ici, chaque pièce est pensée et façonnée

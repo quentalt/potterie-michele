@@ -19,12 +19,11 @@ export function Header() {
   const pathname = usePathname();
 
   const linkClass = (href: string) =>
-      `text-sm tracking-wide transition-colors ${
+      `text-sm tracking-wide transition-colors font-montserrat ${
           pathname === href
-              ? "text-orange-500 font-medium"
-              : "text-muted-foreground hover:text-orange-400"
+              ? "text-primary font-medium"
+              : "text-foreground font-normal hover:text-primary"
       }`;
-
   return (
       <header className="sticky top-0 z-50 border-b border-border bg-background backdrop-blur supports-[backdrop-filter]:bg-background">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
