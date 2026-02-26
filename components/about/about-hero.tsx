@@ -2,25 +2,24 @@ import Image from "next/image";
 
 export function AboutHero() {
     return (
-        <section className="px-6 pt-10 pb-0">
-            <div className="mx-auto max-w-4xl">
-                {/* Two-column layout: portrait left, title right */}
-                <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
+        <section className="mx-auto max-w-7xl px-6 py-12 md:py-20 bg-background">
+                {/* Two-column layout: portrait left, title+text right — aligned at BOTTOM */}
+            <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
                     {/* Portrait image */}
-                    <div className="w-full flex-shrink-0 md:w-[42%]">
-                        <div className="overflow-hidden rounded-sm">
+                    <div className="relative w-full md:w-1/2">
+                        <div className="aspect-[3/4] overflow-hidden rounded-sm bg-muted">
                             <Image
-                                src="https://images.unsplash.com/photo-1607748862156-7c548e7e98f4?w=600&q=80"
-                                alt="Michèle Rey, céramiste à Auxonne"
-                                width={600}
-                                height={500}
-                                className="h-[300px] w-full object-cover md:h-[380px]"
+                                src="/images/about-hero.jpg"
+                                alt="Michèle Rey, céramiste à Auxonne dans son atelier"
+                                fill
+                                className="object-cover"
                                 priority
+                                sizes="(max-width: 768px) 100vw, 50vw"
                             />
                         </div>
                     </div>
 
-                    {/* Title block */}
+                    {/* Title + body block — aligns to bottom of portrait */}
                     <div className="flex-1">
                         <h1 className="font-serif text-5xl italic text-primary md:text-6xl">
                             À propos
@@ -58,17 +57,29 @@ export function AboutHero() {
                     </div>
                 </div>
 
-                {/* Full-width clay hands image below */}
-                <div className="mt-10 overflow-hidden rounded-sm">
-                    <Image
-                        src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=1200&q=80"
-                        alt="Mains d'artisan façonnant l'argile"
-                        width={1200}
-                        height={480}
-                        className="h-[280px] w-full object-cover md:h-[400px]"
-                    />
+                {/* Two images side by side — matching PDF layout (larger left ~60%, smaller right ~40%) */}
+                <div className="mt-10 grid grid-cols-5 gap-4">
+                    {/* Hands shaping clay — wider */}
+                    <div className="col-span-3 overflow-hidden">
+                        <Image
+                            src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=900&q=80"
+                            alt="Mains d'artisan façonnant l'argile"
+                            width={900}
+                            height={500}
+                            className="h-[240px] w-full object-cover md:h-[340px]"
+                        />
+                    </div>
+                    {/* Ceramic figurines — narrower */}
+                    <div className="col-span-2 overflow-hidden">
+                        <Image
+                            src="https://images.unsplash.com/photo-1606722590583-6951b5ea92ad?w=600&q=80"
+                            alt="Figurines en céramique artisanale"
+                            width={600}
+                            height={500}
+                            className="h-[240px] w-full object-cover md:h-[340px]"
+                        />
+                    </div>
                 </div>
-            </div>
         </section>
     );
 }

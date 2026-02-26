@@ -1,28 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { Mail, Instagram, Facebook } from "lucide-react";
-import { useState } from "react";
 
 /* ─────────────────────────────────────────────
    1. HERO – photo left, contact info right
 ───────────────────────────────────────────── */
 export function ContactHero() {
     return (
-        <section className="px-6 pt-10 pb-0">
-            <div className="mx-auto max-w-4xl">
-                <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
+        <section className="mx-auto max-w-7xl px-6 py-12 md:py-20 bg-background">
+                <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
                     {/* Portrait */}
-                    <div className="w-full flex-shrink-0 overflow-hidden rounded-sm md:w-[42%]">
-                        <Image
-                            src="https://images.unsplash.com/photo-1607748862156-7c548e7e98f4?w=600&q=80"
-                            alt="Michèle Rey, céramiste à Auxonne"
-                            width={600}
-                            height={520}
-                            className="h-[320px] w-full object-cover md:h-[400px]"
-                            priority
-                        />
+                    <div className="relative w-full md:w-1/2">
+                        <div className="aspect-[3/4] overflow-hidden rounded-sm bg-muted">
+                            <Image
+                                src="/images/hero-vase.png"
+                                alt="Vase en ceramique blanc fait main"
+                                fill
+                                className="object-cover"
+                                priority
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                        </div>
                     </div>
 
                     {/* Text block */}
@@ -90,7 +89,6 @@ export function ContactHero() {
                         </p>
                     </div>
                 </div>
-            </div>
         </section>
     );
 }

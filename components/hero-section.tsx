@@ -3,27 +3,28 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-      <section className="px-6 pt-10 pb-0">
-        <div className="mx-auto max-w-4xl">
-          <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
-            {/* Left: hero image */}
-            <div className="w-full flex-shrink-0 overflow-hidden rounded-sm md:w-[42%]">
+      <section className="mx-auto max-w-7xl px-6 py-12 md:py-20 bg-background">
+        <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
+          {/* Hero Image */}
+          <div className="relative w-full md:w-1/2">
+            <div className="aspect-[3/4] overflow-hidden rounded-sm bg-muted">
               <Image
-                  src="https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=600&q=80"
-                  alt="Vase en céramique fait main"
-                  width={600}
-                  height={680}
-                  className="h-[360px] w-full object-cover md:h-[460px]"
+                  src="/images/hero-vase.png"
+                  alt="Vase en ceramique blanc fait main"
+                  fill
+                  className="object-cover"
                   priority
-                  sizes="(max-width: 768px) 100vw, 42vw"
+                  sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
+            </div>
+
 
             {/* Right: content */}
             <div className="flex-1 pt-2">
               {/* Italic orange label */}
               <h1 className="font-serif text-5xl italic text-primary md:text-6xl">
-                Inspirations
+                Artisanat
               </h1>
 
               {/* Main title */}
@@ -61,7 +62,6 @@ export function HeroSection() {
               </div>
             </div>
           </div>
-        </div>
       </section>
   );
 }

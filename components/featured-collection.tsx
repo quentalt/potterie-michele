@@ -43,7 +43,7 @@ export function FeaturedCollection() {
                 href="/galerie"
                 className="mb-1 flex items-center gap-1 text-sm text-foreground transition-colors hover:text-primary"
             >
-              Voir tout <span aria-hidden>→</span>
+               Tout Voir <span aria-hidden>→</span>
             </Link>
           </div>
 

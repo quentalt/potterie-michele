@@ -2,27 +2,28 @@ import Image from "next/image";
 
 export function EventsHero() {
     return (
-        <section className="px-6 pt-10 pb-0">
-            <div className="mx-auto max-w-4xl">
-                <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
-                    {/* Portrait image */}
-                    <div className="w-full flex-shrink-0 overflow-hidden rounded-sm md:w-[42%]">
-                        <Image
-                            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
-                            alt="Stand de marché de créateurs céramique"
-                            width={600}
-                            height={500}
-                            className="h-[300px] w-full object-cover md:h-[380px]"
-                            priority
-                        />
+        <section className="mx-auto max-w-7xl px-6 py-12 md:py-20 bg-background">
+               <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
+                    {/* Left image — aspect-ratio container, no rounded corners */}
+                    <div className="relative w-full md:w-1/2">
+                        <div className="aspect-[3/4] overflow-hidden rounded-sm bg-muted">
+                            <Image
+                                src="/images/hero-vase.png"
+                                alt="Vase en ceramique blanc fait main"
+                                fill
+                                className="object-cover"
+                                priority
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                        </div>
                     </div>
 
                     {/* Text block */}
                     <div className="flex-1">
                         <h1 className="font-serif text-5xl italic text-primary md:text-6xl">
-                            Évènements
+                            Événements
                         </h1>
-                        <h2 className="mt-3 font-serif text-3xl font-semibold text-primary md:text-4xl">
+                        <h2 className="mt-3 font-serif text-3xl italic font-semibold text-chart-5 md:text-4xl">
                             Rencontres, marchés
                             <br />
                             et expositions
@@ -44,7 +45,6 @@ export function EventsHero() {
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
     );
 }

@@ -4,20 +4,20 @@ export function SpotlightSection() {
   return (
       <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-4xl">
-          <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
-            {/* Left: featured image */}
-            <div className="w-full flex-shrink-0 overflow-hidden rounded-sm md:w-[42%]">
+          <div className="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-12">
+            {/* Left: featured image — stretches to match text column height exactly */}
+            <div className="relative w-full flex-shrink-0 md:w-[48%] min-h-[300px]">
               <Image
-                  src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=600&q=80"
+                  src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80"
                   alt="Sculpture du moment — céramique O Grès de la Terre"
-                  width={600}
-                  height={560}
-                  className="h-[320px] w-full object-cover md:h-[420px]"
-                  sizes="(max-width: 768px) 100vw, 42vw"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 48vw"
               />
             </div>
 
-            {/* Right: text */}
+            {/* Right: text — aligned to top */}
             <div className="flex-1 pt-2">
               {/* Label */}
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
