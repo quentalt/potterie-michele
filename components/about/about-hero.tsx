@@ -24,7 +24,7 @@ export function AboutHero() {
                         <h1 className="font-serif text-5xl italic text-primary md:text-6xl">
                             À propos
                         </h1>
-                        <h2 className="mt-3 font-serif text-3xl font-semibold text-primary md:text-4xl">
+                        <h2 className="mt-3 font-serif text-3xl font-semibold text-chart-5 md:text-4xl">
                             Michèle Rey
                             <br />
                             céramiste à Auxonne
@@ -42,7 +42,7 @@ export function AboutHero() {
                             </p>
                             <p>
                                 Dans mon atelier{" "}
-                                <strong>O GRÈS DE LA TERRE</strong>, je conçois
+                                <strong className="text-chart-5">O GRÈS DE LA TERRE</strong>, je conçois
                                 des objets décoratifs et utilitaires empreints
                                 de ma vision artistique : des pièces singulières
                                 où textures et volumes s'épanouissent au rythme
