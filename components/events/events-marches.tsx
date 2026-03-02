@@ -9,7 +9,7 @@ export function EventsMarches() {
                     <h2 className="font-kufam font-semibold text-5xl text-primary md:text-6xl">
                         Marchés et expositions
                     </h2>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground">
                         Saison 2025 / 2026
                     </p>
                 </div>

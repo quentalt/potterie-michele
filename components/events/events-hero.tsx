@@ -21,7 +21,7 @@ export function EventsHero() {
                     {/* Text block */}
                     <div className="flex-1">
                         <h1 className="font-kufam font-semibold text-5xl text-primary md:text-6xl">
-                            Événements
+                            Évènements
                         </h1>
                         <h2 className="mt-3 font-kufam font-medium text-3xl text-brown md:text-4xl">
                             Rencontres, marchés

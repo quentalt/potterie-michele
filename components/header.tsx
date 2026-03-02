@@ -19,9 +19,9 @@ export function Header() {
   const pathname = usePathname();
 
   const linkClass = (href: string) =>
-      `text-sm tracking-wide transition-colors font-montserrat ${
+      `font-bold tracking-wide transition-colors font-montserrat ${
           pathname === href
-              ? "text-primary font-medium"
+              ? "text-primary font-bold"
               : "text-foreground font-normal hover:text-primary"
       }`;
   return (
@@ -29,9 +29,8 @@ export function Header() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/images/logo.png" width={50} height={50} alt="Logo" />
-            <span className="text-lg font-semibold tracking-tight text-foreground">
-            Ogresdelaterre
+            <span className="font-saira text-brown text-lg font-bold tracking-tight">
+            O’GRÈS DE LA TERRE
           </span>
           </Link>
 

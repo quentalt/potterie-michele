@@ -23,12 +23,11 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/public" className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center">
-               <Image src="/images/logo.png" width={50} height={50} alt="Logo"/>
               </span>
-              <span className="text-lg font-semibold tracking-tight text-foreground">
-                Ogresdelaterre
+              <span className="font-saira text-brown text-lg font-bold tracking-tight">
+                O’GRÈS DE LA TERRE
               </span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">

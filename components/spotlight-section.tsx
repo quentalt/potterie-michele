@@ -4,23 +4,23 @@ export function SpotlightSection() {
   return (
       <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-4xl">
-          <div className="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-12">
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:gap-12">
             {/* Left: featured image — stretches to match text column height exactly */}
-            <div className="relative w-full flex-shrink-0 md:w-[48%] min-h-[300px]">
+            <div className="w-full flex-shrink-0 md:w-[48%] md:mb-1">
               <Image
-                  src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80"
+                  src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=2000&q=80"
                   alt="Sculpture du moment — céramique O Grès de la Terre"
-                  fill
-                  className="object-cover"
+                  width={2000}
+                  height={800}
                   priority
-                  sizes="(max-width: 768px) 100vw, 48vw"
+                  className="w-full h-[420px] md:h-[520px] object-cover"
               />
             </div>
 
             {/* Right: text — aligned to top */}
             <div className="flex-1 pt-2">
               {/* Label */}
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+              <p className="text-xs font-manrope font-medium uppercase tracking-[0.25em] text-muted-foreground">
                 — Coup de projecteur —
               </p>
 

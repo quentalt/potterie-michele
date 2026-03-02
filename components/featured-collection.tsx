@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import {BigTitle} from "@/components/bigtitle";
 
 const categories = [
   {
@@ -27,15 +28,15 @@ const categories = [
 
 export function FeaturedCollection() {
   return (
-      <section className="px-6 py-16 md:py-20">
-        <div className="mx-auto max-w-4xl">
+      <section className="pt-4 pb-16 md:pt-6 md:pb-20">
+        <div className="mx-auto max-w-7xl px-2">
           {/* Section header */}
           <div className="flex items-end justify-between">
-            <div>
-              <h2 className="font-kufam font-semibold text-5xl text-primary md:text-6xl">
+            <div className="-ml-1">
+              <BigTitle>
                 Galerie
-              </h2>
-              <p className="mt-1 text-xs font-manrope font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              </BigTitle>
+              <p className="mt-1 text-xs font-manrope font-medium uppercase tracking-[0.1em] text-muted-foreground">
                 Saison 2025 / 2026
               </p>
             </div>
@@ -43,7 +44,7 @@ export function FeaturedCollection() {
                 href="/galerie"
                 className="mb-1 flex items-center gap-1 text-sm text-foreground transition-colors hover:text-primary"
             >
-               Tout Voir <span aria-hidden>→</span>
+              Tout Voir <span aria-hidden>→</span>
             </Link>
           </div>
 
@@ -51,8 +52,8 @@ export function FeaturedCollection() {
           <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-3 font-manrope">
             {categories.map((cat) => (
                 <Link key={cat.name} href={cat.href} className="group">
-                  {/* Image — natural rectangle, not forced square */}
-                  <div className="relative aspect-[4/3] overflow-hidden  bg-muted">
+                  {/* Image carrée */}
+                  <div className="relative aspect-square overflow-hidden bg-muted">
                     <Image
                         src={cat.image}
                         alt={cat.name}
@@ -63,12 +64,12 @@ export function FeaturedCollection() {
                   </div>
 
                   {/* Category name */}
-                  <h3 className="mt-4 font-manrope text-brown text-sm font-semibold">
+                  <h3 className="mt-4 font-manrope text-brown text-base font-bold">
                     {cat.name}
                   </h3>
 
                   {/* Description */}
-                  <p className="mt-2 text-[12px] leading-relaxed text-foreground">
+                  <p className=" font-manrope font-medium mt-2 text-[12px] leading-snug text-foreground">
                     {cat.description}
                   </p>
                 </Link>
