@@ -1,59 +1,43 @@
 import Image from "next/image";
 import Link from "next/link";
-import {BigTitle} from "@/components/bigtitle";
 
 export function HeroSection() {
   return (
-      <section className="mx-auto max-w-7xl px-4 pt-12 pb-4 md:pt-20 md:pb-6 bg-background">
-        <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
-          {/* Hero Image */}
-            <div className="flex-shrink-0">
-                <Image
-                    src="https://images.unsplash.com/photo-1687191883721-257d8cad5b54?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Artisan façonnant une pièce en céramique"
-                    width={2000}
-                    height={400}
-                    className="w-full h-auto object-cover"
-                />
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <Image
+                src="https://images.unsplash.com/photo-1751914077095-1a832c1d0c7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW5kbWFkZSUyMGNlcmFtaWMlMjBwb3R0ZXJ5JTIwc2N1bHB0dXJlfGVufDF8fHx8MTc3Mjc4MzQ4OHww&ixlib=rb-4.1.0&q=40&w=1080&utm_source=figma&utm_medium=referral"
+                alt="Céramique artisanale"
+                className="w-full shadow-lg"
+                width={1080}
+                height={400}
+                style={{ height: '725px' }}
+            />
           </div>
 
-
-          {/* Right: content */}
-          <div className="flex-1 pt-2">
-            {/* Titre orange principal — référence pour toutes les pages */}
-            <BigTitle>
+          <div>
+            <h1 className="text-6xl mb-4 text-[#ff6600] font-['Kufam'] font-semibold text-left">
               Artisanat
-            </BigTitle>
-
-            {/* Main title */}
-            <h2 className="mt-4 font-kufam font-medium text-3xl leading-tight text-brown md:text-4xl">
-              Façonné à la main,
-              <br />
+            </h1>
+            <h2 className="text-[#93471C] font-['Kufam'] pl-[0px] pr-[50px] py-[0px] mx-[0px] mt-[0px] mb-[22px] text-[40px] leading-tight">
+              Façonné à la main,<br/>
               inspiré par la terre.
             </h2>
-
-            {/* Description */}
-            <p className="mt-6 max-w-sm text-[15px] leading-relaxed font-manrope">
-              Mon approche se distingue des productions
-              industrielles : ici, chaque objet est unique. Le modelage
-              manuel me permet de créer des pièces authentiques,
-              personnalisées et adaptées à vos envies, que ce soit
-              pour illuminer votre intérieur avec une lampe, apporter
-              une touche de caractère avec un vase ou sublimer un
-              espace grâce à une sculpture.
+            <p className="text-gray-700 mb-8 leading-relaxed font-manrope pr-[150px]">
+              Mon approche se distingue des productions industrielles : Le modelage manuel me permet de créer des pièces authentiques, personnalisées et adaptées à vos envies, que ce soit pour votre intérieur avec une lampe, apporter une touche de caractère avec un vase ou sublimer un espace grâce à une sculpture.
             </p>
 
-            {/* CTAs */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="flex gap-4">
               <Link
                   href="/galerie"
-                  className="rounded-sm bg-brown px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                  className="bg-brown text-white px-6 py-3 rounded-md"
               >
                 Explorer la galerie
               </Link>
               <Link
                   href="/a-propos"
-                  className="rounded-sm border border-brown px-6 py-3 text-sm font-semibold text-brown transition-colors hover:bg-brown hover:text-white"
+                  className="border-2 border-brown text-orange-700 px-6 py-3 rounded-md "
               >
                 À propos
               </Link>
