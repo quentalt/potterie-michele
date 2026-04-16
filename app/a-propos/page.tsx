@@ -1,18 +1,5 @@
-import type { Metadata } from "next";
-import { AboutHero } from "@/components/about/about-hero";
-import { AboutStory } from "@/components/about/about-story";
-
-export const metadata: Metadata = {
-    title: "L'Artisanat | Ogresdelaterre",
-    description:
-        "In the quiet dance between earth and hand, we find the soul of every vessel. Discover our story.",
-};
+import { About } from "@/components/About";
 
 export default function AboutPage() {
-    return (
-        <>
-            <AboutHero />
-            <AboutStory />
-        </>
-    );
+    return <About />;
 }

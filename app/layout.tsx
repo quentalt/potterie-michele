@@ -1,12 +1,13 @@
 import React from "react"
 import type { Metadata } from "next";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+
 import { Manrope } from "next/font/google";
 import { Montserrat } from "next/font/google";
 import { Saira } from "next/font/google";
 import { Kufam } from "next/font/google";
 import "./globals.css";
+import {Footer} from "@/app/pages/Footer";
+import {Header} from "@/app/pages/Header";
 
 const manrope = Manrope({
     subsets: ['latin'],
@@ -47,7 +48,7 @@ export default function RootLayout({
     return (
         <html lang="fr" className={`${manrope.variable} ${montserrat.variable} ${saira.variable} ${kufam.variable}`}>
         <body className="bg-background text-foreground antialiased">
-        <Header />
+        <Header/>
         <main>{children}</main>
         <Footer />
         </body>
