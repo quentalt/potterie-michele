@@ -1,9 +1,9 @@
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import { Link } from "react-router";
 import { useState } from "react";
 import { Menu, X, Images } from "lucide-react";
-import { ScrollToTop } from "../components/ScrollToTop";
-import { ImageGalleryModal } from "../components/ImageGalleryModal";
+import Link from "next/link";
+import {ImageWithFallback} from "@/components/ImageWithFallback";
+import {ScrollToTop} from "@/app/pages/ScrollToTop";
+import {ImageGalleryModal} from "@/app/pages/ImageGalleryModal";
 
 export function Vases() {
   const [selectedCategory, setSelectedCategory] = useState("vases");
@@ -115,7 +115,7 @@ export function Vases() {
           {categories.map((category) => (
             <Link
               key={category.id}
-              to={category.path}
+              href={category.path}
               className={`pb-3 transition-colors relative text-lg ${
                 selectedCategory === category.id
                   ? "text-[#ff6600] font-semibold"
@@ -152,7 +152,7 @@ export function Vases() {
                 {categories.map((category) => (
                   <Link
                     key={category.id}
-                    to={category.path}
+                    href={category.path}
                     onClick={() => {
                       setMobileMenuOpen(false);
                     }}
@@ -196,7 +196,7 @@ export function Vases() {
       {/* Return Button aligned to the right */}
       <div className="flex justify-end">
         <Link
-          to="/galerie"
+          href="/galerie"
           className="bg-[#ff6600] hover:bg-[#93471C] text-white text-sm px-4 py-2 rounded transition-colors inline-block"
         >
           Retour toutes créations

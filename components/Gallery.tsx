@@ -221,7 +221,7 @@ export function Gallery() {
                 {categories.map((category) => (
                   <Link
                     key={category.id}
-                    to={category.path}
+                    href={category.path}
                     onClick={() => {
                       setMobileMenuOpen(false);
                     }}
