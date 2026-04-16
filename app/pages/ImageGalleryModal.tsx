@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { ImageWithFallback } from "../../../../Documents/Downloads/projetartisan/components/figma/ImageWithFallback";
+import {ImageWithFallback} from "@/components/ImageWithFallback";
 
 interface ImageGalleryModalProps {
   images: string[];
